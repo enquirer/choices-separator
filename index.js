@@ -4,8 +4,8 @@ var repeat = require('repeat-string');
 var gray = require('ansi-gray');
 
 /**
- * Separator object, used in choices arrays in [enquirer][] prompts to provide
- * a separation between sections.
+ * Separator object, used in choices arrays in prompts to create a visual break
+ * between sections.
  *
  * @param {String} `line` String to use as a separator
  * @api public

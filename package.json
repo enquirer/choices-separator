@@ -1,12 +1,12 @@
 {
-  "name": "enquirer-separator",
-  "description": "Separator for Enquirer prompts. Based on the Separator from inquirer.",
+  "name": "choices-separator",
+  "description": "Separator for choices arrays in prompts. Based on the Separator from inquirer.",
   "version": "0.1.0",
-  "homepage": "https://github.com/jonschlinkert/enquirer-separator",
+  "homepage": "https://github.com/enquirer/choices-separator",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
-  "repository": "jonschlinkert/enquirer-separator",
+  "repository": "enquirer/choices-separator",
   "bugs": {
-    "url": "https://github.com/jonschlinkert/enquirer-separator/issues"
+    "url": "https://github.com/enquirer/choices-separator/issues"
   },
   "license": "MIT",
   "files": [
@@ -22,7 +22,8 @@
     "test": "mocha"
   },
   "dependencies": {
-    "ansi-dim": "^0.1.1"
+    "ansi-gray": "^0.1.1",
+    "repeat-string": "^1.5.4"
   },
   "keywords": [
     "answer",
@@ -53,7 +54,9 @@
     "ui"
   ],
   "devDependencies": {
-    "gulp-format-md": "^0.1.10"
+    "gulp-format-md": "^0.1.10",
+    "mocha": "^3.0.2",
+    "strip-color": "^0.1.0"
   },
   "verb": {
     "toc": false,
@@ -68,7 +71,9 @@
       "reflinks": true
     },
     "related": {
-      "list": ["enquirer"]
+      "list": [
+        "enquirer"
+      ]
     },
     "reflinks": [
       "verb",
