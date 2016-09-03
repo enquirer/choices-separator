@@ -13,6 +13,7 @@ var gray = require('ansi-gray');
 
 function Separator(line) {
   this.isSeparator = true;
+  this.prefix = ' ';
   this.type = 'separator';
   this.chars = {middot: '·', line: '─', bullet: '•'};
   this.line = this.chars[line] || line;
@@ -22,6 +23,15 @@ function Separator(line) {
     this.line = gray(this.line);
   }
 }
+
+/**
+ * Render the separator line with a prefix.
+ * @return {String}
+ */
+
+Separator.prototype.render = function() {
+  return this.prefix + this.line + '\n';
+};
 
 /**
  * Helper function returning false if object is a separator
