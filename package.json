@@ -1,7 +1,7 @@
 {
   "name": "choices-separator",
   "description": "Separator for choices arrays in prompts. Based on the Separator from inquirer.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/enquirer/choices-separator",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "enquirer/choices-separator",
