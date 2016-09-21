@@ -1,5 +1,6 @@
 'use strict';
 
+var debug = require('debug')('choices-separator');
 var repeat = require('repeat-string');
 var gray = require('ansi-gray');
 
@@ -12,6 +13,7 @@ var gray = require('ansi-gray');
  */
 
 function Separator(line) {
+  debug('initializing from <%s>', __filename);
   this.isSeparator = true;
   this.prefix = ' ';
   this.type = 'separator';
