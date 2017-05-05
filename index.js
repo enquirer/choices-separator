@@ -1,8 +1,9 @@
 'use strict';
 
+var extend = require('extend-shallow');
 var debug = require('debug')('choices-separator');
 var repeat = require('repeat-string');
-var gray = require('ansi-gray');
+var dim = require('ansi-dim');
 
 /**
  * Separator object, used in choices arrays in prompts to create a visual break
@@ -12,18 +13,21 @@ var gray = require('ansi-gray');
  * @api public
  */
 
-function Separator(line) {
+function Separator(line, options) {
   debug('initializing from <%s>', __filename);
   this.isSeparator = true;
-  this.prefix = ' ';
   this.type = 'separator';
-  this.chars = {middot: '·', line: '─', bullet: '•'};
-  this.line = this.chars[line] || line;
-  if (!this.line) {
-    this.line = gray(repeat(this.chars.line, 8));
-  } else {
-    this.line = gray(this.line);
+  if (typeof line !== 'string') {
+    options = line;
+    line = null;
   }
+
+  var opts = extend({line: line}, options);
+  this.prefix = opts.prefix || ' ';
+  this.chars = {middot: '·', line: '─', bullet: '•'};
+  this.line = dim(this.chars[opts.line]
+    || opts.line
+    || repeat(this.chars.line, 8));
 }
 
 /**
