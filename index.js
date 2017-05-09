@@ -25,9 +25,15 @@ function Separator(line, options) {
   var opts = extend({line: line}, options);
   this.prefix = opts.prefix || ' ';
   this.chars = {middot: '·', line: '─', bullet: '•'};
-  this.line = dim(this.chars[opts.line]
-    || opts.line
-    || repeat(this.chars.line, 8));
+  if (typeof opts.line === 'string') {
+    if (this.chars[opts.line]) {
+      this.line = dim(this.chars[opts.line]);
+    } else {
+      this.line = opts.line;
+    }
+  } else {
+    this.line = dim(repeat(this.chars.line, 8));
+  }
 }
 
 /**
