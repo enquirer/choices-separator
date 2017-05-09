@@ -1,7 +1,7 @@
 {
   "name": "choices-separator",
   "description": "Separator for choices arrays in prompts. Based on the Separator from inquirer.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/enquirer/choices-separator",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "enquirer/choices-separator",
@@ -18,6 +18,17 @@
   },
   "scripts": {
     "test": "mocha"
+  },
+  "dependencies": {
+    "ansi-dim": "^0.1.1",
+    "debug": "^2.6.6",
+    "extend-shallow": "^2.0.1",
+    "repeat-string": "^1.6.1"
+  },
+  "devDependencies": {
+    "gulp-format-md": "^0.1.12",
+    "mocha": "^3.3.0",
+    "strip-color": "^0.1.0"
   },
   "keywords": [
     "answer",
@@ -64,21 +75,6 @@
       "list": [
         "enquirer"
       ]
-    },
-    "reflinks": [
-      "verb",
-      "verb-generate-readme"
-    ]
-  },
-  "dependencies": {
-    "ansi-dim": "^0.1.1",
-    "debug": "^2.6.6",
-    "extend-shallow": "^2.0.1",
-    "repeat-string": "^1.6.1"
-  },
-  "devDependencies": {
-    "gulp-format-md": "^0.1.12",
-    "mocha": "^3.3.0",
-    "strip-color": "^0.1.0"
+    }
   }
 }
