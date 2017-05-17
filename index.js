@@ -1,8 +1,7 @@
 'use strict';
 
-var extend = require('extend-shallow');
 var debug = require('debug')('choices-separator');
-var repeat = require('repeat-string');
+var strip = require('strip-color');
 var dim = require('ansi-dim');
 
 /**
@@ -13,31 +12,40 @@ var dim = require('ansi-dim');
  * @api public
  */
 
-function Separator(line, options) {
+function Separator(options) {
   debug('initializing from <%s>', __filename);
   this.isSeparator = true;
   this.type = 'separator';
-  if (typeof line !== 'string') {
-    options = line;
-    line = null;
+
+  if (typeof options === 'string') {
+    options = { line: options };
   }
 
-  var opts = extend({line: line}, options);
-  this.prefix = opts.prefix || ' ';
-  this.chars = {middot: '·', line: '─', bullet: '•'};
-  if (typeof opts.line === 'string') {
-    if (this.chars[opts.line]) {
-      this.line = dim(this.chars[opts.line]);
-    } else {
-      this.line = opts.line;
-    }
+  this.options = options || {};
+  this.prefix = ' ';
+
+  if (typeof this.options.prefix === 'string') {
+    this.prefix = this.options.prefix;
+  }
+
+  if (typeof this.options.line === 'string') {
+    this.line = this.options.line;
   } else {
-    this.line = dim(repeat(this.chars.line, 8));
+    this.line = dim('────────');
   }
 }
 
 /**
- * Render the separator line with a prefix.
+ * Returns the `separator.line` stripped of ansi styling.
+ * @return {String}
+ */
+
+Separator.prototype.raw = function() {
+  return strip(this.line);
+};
+
+/**
+ * Render `separator.prefix` plus `separator.line`.
  * @return {String}
  */
 
@@ -46,19 +54,19 @@ Separator.prototype.render = function() {
 };
 
 /**
- * Helper function returning false if object is a separator
- * @param  {Object} `obj` object to test against
+ * Returns false if the given object is a separator.
+ * @param  {Object} `choice` object to test against
  * @return {Boolean} Returns false if the given object is a separator
  * @api public
  */
 
-Separator.exclude = function(obj) {
-  return obj.type !== 'separator';
+Separator.exclude = function(choice) {
+  return choice.type !== 'separator';
 };
 
 /**
  * Stringify separator
- * @return {String} the separator display string
+ * @return {String} Returns the `separator.line` string
  * @api public
  */
 
