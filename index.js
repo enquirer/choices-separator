@@ -5,10 +5,16 @@ var strip = require('strip-color');
 var dim = require('ansi-dim');
 
 /**
- * Separator object, used in choices arrays in prompts to create a visual break
- * between sections.
+ * Separator object, used in choices arrays in prompts, to
+ * create a visual break between sections. The default separator
+ * line is `────────` styled with [ansi-dim].
  *
- * @param {String} `line` String to use as a separator
+ * ```js
+ * new Separator('----');
+ * new Separator({line: '----'})
+ * new Separator({line: '----', prefix: '    '});
+ * ```
+ * @param {String} `options` Optionally provide a custom `line` and or `prefix` to use.
  * @api public
  */
 
@@ -37,7 +43,14 @@ function Separator(options) {
 
 /**
  * Returns the `separator.line` stripped of ansi styling.
+ *
+ * ```js
+ * var separator = new Separator();
+ * console.log(separator.raw());
+ * //=> '────────'
+ * ```
  * @return {String}
+ * @api public
  */
 
 Separator.prototype.raw = function() {
@@ -46,7 +59,14 @@ Separator.prototype.raw = function() {
 
 /**
  * Render `separator.prefix` plus `separator.line`.
+ *
+ * ```js
+ * var separator = new Separator();
+ * console.log(separator.render());
+ * //=> ' \u001b[2m────────\u001b[22m\n')
+ * ```
  * @return {String}
+ * @api public
  */
 
 Separator.prototype.render = function() {
