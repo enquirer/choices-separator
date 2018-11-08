@@ -2,11 +2,11 @@
   "name": "choices-separator",
   "description": "Separator for choices arrays in prompts. Based on the Separator from inquirer.",
   "version": "2.0.0",
-  "homepage": "https://github.com/enquirer/choices-separator",
+  "homepage": "https://github.com/enquirer/enquirer",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
-  "repository": "enquirer/choices-separator",
+  "repository": "enquirer/enquirer",
   "bugs": {
-    "url": "https://github.com/enquirer/choices-separator/issues"
+    "url": "https://github.com/enquirer/enquirer/issues"
   },
   "license": "MIT",
   "files": [
@@ -59,7 +59,7 @@
   ],
   "verb": {
     "toc": false,
-    "layout": "default",
+    "layout": false,
     "tasks": [
       "readme"
     ],
